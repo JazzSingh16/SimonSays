@@ -28,10 +28,14 @@ namespace Simon
         Turn turn = Turn.PLAYER;
 
         List<SimonColors> moves;   // Hint
+        
+
         int PlayBackIndex = 0;  // Index into moves list
         int PlayerTurnIndex = 0; // When it's the player's turn, you can use this to store what move the player is on
 
-        SimonColors Lit = SimonColors.NONE;  // Which button is currently lit up?
+        SimonColors Lit = SimonColors.NONE;
+       
+        // Which button is currently lit up?
 
         public Game1()
         {
@@ -54,7 +58,7 @@ namespace Simon
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            
             base.Initialize();
         }
 
@@ -99,21 +103,22 @@ namespace Simon
                 this.Exit();
 
             // TODO: Add your update logic here
-
+         
             if (turn == Turn.COMPUTER)
             {
                 // TODO: After 1 second add a random move
 
-                // moves.Add((SimonColors)rand.Next(0, 4));
-                // turn = Turn.PLAYBACK;
-                // PlayBackIndex = 0;
+                 moves.Add((SimonColors)rand.Next(0, 4));
+                 turn = Turn.PLAYBACK;
+                 PlayBackIndex = 0;
             }
             else if (turn == Turn.PLAYBACK)
             {
                 // TODO: Play one move every 750ms.. 
                 // DO NOT PLAY BACK ALL MOVES AT ONCE
 
-                // If PlayBackIndex == moves.Count then turn = Turn.PLAYER (and set PlayerTurnIndex to 0)
+                turn = Turn.PLAYER;
+                PlayerTurnIndex = 0;
             }
             else if (turn == Turn.PLAYER)
             {
